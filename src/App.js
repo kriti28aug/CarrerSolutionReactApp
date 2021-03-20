@@ -1,24 +1,30 @@
-import logo from './logo.svg';
-import './App.css';
+import React, {useState} from "react";
+
+import {BrowserRouter as Router, Route, Switch, Redirect} from "react-router-dom";
+import HomePage from "./components/HomePage";
+import JobSeekerLoginPage from "./components/jobSeeker/JobSeekerLoginPage";
+import JobSeekerSignUpPage from "./components/jobSeeker/JobSeekerSignUpPage";
+import RecruiterLoginPage from "./components/recruiter/RecruiterLoginPage";
+import RecruiterSignUpPage from "./components/recruiter/RecruiterSignUpPage";
+
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div>
+      <Router>
+        <Switch>
+          <Route path="/" exact component={HomePage} />
+          <Route path="/recruiter" component={RecruiterLoginPage} />
+          <Route path="/recruitersignup" component={RecruiterSignUpPage} />
+
+          <Route path="/jobSeeker" component={JobSeekerLoginPage} />
+          <Route path="/jobSeekerSignUp" component={JobSeekerSignUpPage} />
+
+          <Redirect path="/" />
+        </Switch>
+      </Router>
     </div>
+
   );
 }
 
