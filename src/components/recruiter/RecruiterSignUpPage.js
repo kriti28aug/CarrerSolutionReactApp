@@ -67,7 +67,7 @@ function RecruiterSignUpPage() {
 						<td><input type="password" placeholder="Enter Password here" id="t5" class="tb"  /></td>
 					</tr>  */}
 					<tr>
-						<td></td>
+						
 						<td>
 							<input type="reset" value="Clear Form" onClick={resetForm} id="res" class="btn" />
 							<input type="submit" value="Create Account" class="btn" onClick= {register}/></td>

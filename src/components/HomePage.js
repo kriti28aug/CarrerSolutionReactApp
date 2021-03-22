@@ -1,25 +1,36 @@
-import React, {useState} from 'react';
-import { BrowserRouter as Router, Route, Redirect} from 'react-router-dom';
-import {useHistory} from "react-router-dom";
+import React from 'react';
+import {Button, Card, Space} from "antd";
+import { useHistory } from "react-router-dom";
+import "antd/dist/antd.css";
+import "../components/homePage.css";
 
-function HomePage(){
+  
+
+function HomePage() {
     let history = useHistory();
 
-    function recruiterPage(){
+    function recruiterPage() {
         history.push("/recruiter");
     }
-    function jobSeekerPage(){
+    function jobSeekerPage() {
         history.push("/jobSeeker");
     }
+  
 
-    return(
-        <div>
-            <p>
-                 JOB PORTAL
-            </p>
-            <button type="button" onClick = {recruiterPage}>Recruiter Login</button>
-            <button type="button" onClick = {jobSeekerPage}>JobSeeker Login</button>
+
+    return (
+        <div>      
+            <Card
+                title="JOB PORTAL"
+                className="homepage-card-position"
+                bordered={true}
+            >
+                <Space>
+                    <Button type="primary" onClick={recruiterPage}>Recruiter</Button>
+                    <Button type="primary" onClick={jobSeekerPage}>JobSeeker</Button>
+                </Space>
+            </Card>
         </div>
-    )
+    );
 }
 export default HomePage;

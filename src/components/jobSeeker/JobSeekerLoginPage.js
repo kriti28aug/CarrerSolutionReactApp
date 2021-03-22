@@ -1,8 +1,28 @@
 import React, { Component } from 'react';
+import { Button, Form, Input, Space } from "antd";
 import { useHistory } from "react-router-dom";
+import "../jobSeeker/jobSeeker.css";
+import "./../../components/homePage.css"
+
+
 
 function JobSeekerLoginPage() {
     let history = useHistory();
+
+    const layout = {
+        labelCol: {
+            span: 8
+        },
+        wrapperCol: {
+            span: 16
+        }
+    };
+    const tailLayout = {
+        wrapperCol: {
+            offset: 8,
+            span: 16
+        }
+    };
 
     function jobSeekerSignUpPage() {
         history.push("/jobSeekerSignUp");
@@ -11,20 +31,57 @@ function JobSeekerLoginPage() {
     return (
 
         <div>
-            <p>
-                JobSeeker Signup Page
-                </p>
-            <label for="uname"><b>Username</b></label>
-            <input type="text" placeholder="Enter Username" name="uname" required /><br></br><br></br>
+            <div className="card-size  container-seeker-box align-title">
+                <div className="align-title">
+                    <strong>Sign in to your account</strong>
+                </div>
+                <br />
 
-            <label for="psw"><b>Password</b></label>
-            <input type="password" placeholder="Enter Password" name="psw" required /><br></br><br></br>
+                <Form
+                    {...layout}
+                    name="basic"
+                    initialValues={{
+                        remember: true
+                    }}
+                >
+                    <Form.Item
+                        label="Username"
+                        name="username"
+                        rules={[
+                            {
+                                required: true,
+                                message: "Please input your username!"
+                            }
+                        ]}
+                    >
+                        <Input />
+                    </Form.Item>
 
-            <button type="submit">Login</button>
-
-            <button type="button" onClick={jobSeekerSignUpPage}>SignUp</button>
+                    <Form.Item
+                        label="Password"
+                        name="password"
+                        rules={[
+                            {
+                                required: true,
+                                message: "Please input your password!"
+                            }
+                        ]}
+                    >
+                        <Input.Password />
+                    </Form.Item>
+                    <Form.Item {...tailLayout}>
+                        <Space>
+                            <Button type="primary" htmlType="submit">
+                                Submit
+                </Button>
+                            <Button type="default" onClick={jobSeekerSignUpPage}>
+                                Create Account
+                </Button>
+                        </Space>
+                    </Form.Item>
+                </Form>
+            </div>
         </div>
-
     );
 }
 
